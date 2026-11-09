@@ -9,4 +9,4 @@
 
 
 #### result:
-* ![изображение](https://github.com/vadimlvov71/ddd_laravel/blob/main/public/images/ddd_tests.png)
+* ![изображение](https://github.com/vadimlvov71/nuxt_vue/blob/main/public/images/Nuxt.png)
