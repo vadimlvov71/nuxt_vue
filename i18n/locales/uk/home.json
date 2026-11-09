@@ -12,8 +12,9 @@
             "support": "Customer support"
         }
     },
-    "about": {
-        "title": "About our company",
-        "description": "We help businesses grow..."
+    "headers": {
+        "project": "Проект",
+        "description": "Опис",
+        "git": "Git"
     }
 }

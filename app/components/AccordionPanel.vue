@@ -2,52 +2,81 @@
 defineProps<{
   active: string | null
   name: string
-  items: Record<string, string>   // название проекта -> ссылка на git
+  items: Record<string, { git: string; name: string; description: string }>
 }>()
+
+const emit = defineEmits<{
+  (e: 'toggle', name: string): void
+}>()
+
+const { t } = useI18n()
 </script>
 
 <template>
-  <Transition name="accordion-slow">
-  <div v-show="active === name" class="accordion-content">
-    <v-table density="compact" hover class="bg-transparent">
-      <thead>
-        <tr>
-          <th class="text-left">Git</th>
-          <th class="text-left">Название</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(url, project) in items" :key="project">
-          <td>
-            <a
-              :href="url.git"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-primary text-decoration-none"
-            >
-              {{ url.name }}
-            </a>
-          </td>
-          <td>{{ url.description }}</td>
-        </tr>
-      </tbody>
-    </v-table>
-  </div>
-</Transition>
+  <!-- строка-заголовок секции -->
+  <tr class="section-row" @click="emit('toggle', name)">
+    <td colspan="3" class="font-weight-bold text-uppercase">
+      <v-icon
+        icon="mdi-chevron-right"
+        size="small"
+        class="mr-2 chevron"
+        :class="{ 'chevron-open': active === name }"
+      />
+      {{ name }}
+      <span class="text-medium-emphasis text-caption ml-2">
+        ({{ Object.keys(items).length }})
+      </span>
+    </td>
+  </tr>
+
+  <!-- строки проектов -->
+  <TransitionGroup name="row-fade">
+    <template v-if="active === name">
+      <tr v-for="(project, key) in items" :key="`${name}-${key}`">
+        <td class="font-weight-medium pl-10">
+          <v-icon icon="mdi-folder-outline" size="small" class="mr-2" color="primary" />
+          {{ project.name }}
+        </td>
+        <td class="text-medium-emphasis">{{ project.description }}</td>
+        <td class="text-right">
+          <v-btn
+            :href="project.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="tonal"
+            color="primary"
+            size="small"
+            prepend-icon="mdi-github"
+          >
+            {{ t('button.open') }}
+          </v-btn>
+        </td>
+      </tr>
+    </template>
+  </TransitionGroup>
 </template>
 
 <style>
-.accordion-content { overflow: hidden; }
-
-.accordion-slow-enter-active,
-.accordion-slow-leave-active {
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  max-height: 500px;
+.section-row {
+  cursor: pointer;
+  background: rgba(var(--v-theme-on-surface), 0.04);
 }
 
-.accordion-slow-enter-from,
-.accordion-slow-leave-to {
-  max-height: 0;
+.chevron { transition: transform 0.3s; }
+.chevron-open { transform: rotate(90deg); }
+
+.row-fade-enter-active,
+.row-fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.row-fade-enter-from,
+.row-fade-leave-to {
   opacity: 0;
+}
+
+.nice-table td{
+  color: #000066!important;
+  border-bottom: 1px solid rgb(200, 227, 244);
+  
 }
 </style>

@@ -3,7 +3,9 @@
     "title": "Seo Welcome to My Site",
     "description": "This is the English description of the site."
   },
-  "welcome": "Welcome to My Nuxt 4 Site",
+  "button": {
+    "open": "Відкрити"
+  },
   "description": "This is a simple example of a page with a header, footer and content.",
   "about" : {
     "title": "About Nuxt 4 Site",

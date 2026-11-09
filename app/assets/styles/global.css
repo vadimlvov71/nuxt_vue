@@ -16,3 +16,10 @@ main {
   margin: 0 auto;
   background-color: #fff;
 }
+.block{
+  border-color: #ccc;
+}
+h4 {
+  margin-top: 0;
+  color: #333;
+}
