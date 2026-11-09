@@ -1,0 +1,11 @@
+{
+  "welcome": "!!!!Welcome to My Nuxt 4 Site",
+  "description": "This is a simple example of a page with a header, footer and content.",
+  "name": "en",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "footer": "© 2024 My Nuxt Site"
+}

@@ -1,0 +1,18 @@
+{
+    "welcome": "Welcome to My Nuxt 4 Site",
+    "description": "This is a website with git repositories.",
+    "name": "Vadim Podolian",
+  
+    "features": {
+        "title": "Our advantages",
+        "items": {
+            "quality": "High quality",
+            "experience": "Professional experience",
+            "support": "Customer support"
+        }
+    },
+    "about": {
+        "title": "About our company",
+        "description": "We help businesses grow..."
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "hero": {
+        "title": "Welcome to our website",
+        "subtitle": "We provide professional solutions",
+        "button": "Learn more"
+    },
+    "features": {
+        "title": "Our advantages",
+        "items": {
+            "quality": "High quality",
+            "experience": "Professional experience",
+            "support": "Customer support"
+        }
+    },
+    "about": {
+        "title": "About our company",
+        "description": "We help businesses grow..."
+    }
+}
