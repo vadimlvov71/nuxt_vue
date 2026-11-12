@@ -2,8 +2,8 @@
   <header class="header">
     <nav>
       <NuxtLink to="/">{{ t('nav.home') }}</NuxtLink>
-      <NuxtLink to="/about">{{ t('nav.about') }}</NuxtLink>
-      <NuxtLink to="/contact">{{ t('nav.contact') }}</NuxtLink>
+      <NuxtLink to="/job_experience">{{ t('nav.job_experience') }}</NuxtLink>
+      <NuxtLink to="/technologies">{{ t('nav.technologies') }}</NuxtLink>
     </nav>
     <div class="lang-switch">
       <button v-for="loc in locales" :key="loc.code" @click="setLocale (loc.code)" :disabled="locale === loc.code">

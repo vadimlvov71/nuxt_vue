@@ -1,18 +1,21 @@
 {
-    "hero": {
-        "title": "Welcome to our website",
-        "subtitle": "We provide professional solutions",
-        "button": "Learn more"
-    },
+    "welcome": "Вітаю на Nuxt 4 Site",
+    "description": "Це персональний сайт з підтримкою кількох мов.",
+    "name": "Вадим Подолян",
     "features": {
-        "title": "Our advantages",
+        "lazyLoad": "Фото зверху завантажилось за допомогою lazy loading",
         "items": {
-            "quality": "High quality",
-            "experience": "Professional experience",
-            "support": "Customer support"
+            "php": "PHP from 4.4 to 8.3",
+            "mysql": "Mysql from 5.7 to 8.3",
+            "js": "react. vue2/vue3, nuxt4"
         }
     },
     "headers": {
+        "project": "Проект",
+        "description": "Опис",
+        "git": "Git"
+    },
+    "job": {
         "project": "Проект",
         "description": "Опис",
         "git": "Git"

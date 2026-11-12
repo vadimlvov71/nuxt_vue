@@ -1,11 +1,13 @@
 {
   "seo": {
-    "title": "Seo Welcome to My Site",
+    "title": "Personal Website",
     "description": "This is the English description of the site."
   },
   "button": {
     "open": "Open"
   },
+  "data_is_loaded": "Data is loading",
+  "error": "Error",
   "open": "Open",
   "welcome1": "Welcome to My Nuxt 4 Site",
   "description1": "This is a simple example of a page with a header, footer and content.",
@@ -15,8 +17,8 @@
   }, 
   "nav": {
     "home": "Home",
-    "about": "About",
-    "contact": "Contact"
+    "job_experience": "Job experience",
+    "technologies": "Technologies"
   },
   "footer": " 2026 My Nuxt Site"
 }

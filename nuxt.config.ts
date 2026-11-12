@@ -22,9 +22,12 @@ export default defineNuxtConfig({
     host: '0.0.0.0',
     port: 3000
   },
-
+  ignore: ['**/*.test.*', 'docs/**'],
+    vite: {
+      server: { watch: { ignored: ['**/node_modules/**', '**/.git/**'] } }
+    },
   //layout: 'default' , // например, 'custom' если есть app/layouts/custom.vue
-
+  typescript: { typeCheck: false },
   modules: ['@nuxtjs/i18n', '@nuxt/image', 'vuetify-nuxt-module'],
   i18n: {
     baseUrl: 'http://localhost:3000/',
@@ -39,8 +42,8 @@ export default defineNuxtConfig({
             name: 'English',
             files: [
                 'en/common.json',
-                'en/home.json'
-               // 'en/about.json',
+                'en/home.json',
+                'en/job_experience.json',
                // 'en/contacts.json',
                // 'en/services.json',
                // 'en/seo.json'
@@ -51,8 +54,8 @@ export default defineNuxtConfig({
             name: 'Українська',
             files: [
                 'uk/common.json',
-                'uk/home.json'
-               // 'uk/about.json',
+                'uk/home.json', 
+                'uk/job_experience.json',
                // 'uk/contacts.json',
                // 'uk/services.json',
                // 'uk/seo.json'

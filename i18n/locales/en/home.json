@@ -4,11 +4,11 @@
     "name": "Vadim Podolian",
   
     "features": {
-        "title": "Our advantages",
+        "lazyLoad": "The above image is lazy loaded",
         "items": {
-            "quality": "High quality",
-            "experience": "Professional experience",
-            "support": "Customer support"
+            "php": "PHP from 4.4 to 8.3",
+            "mysql": "Mysql from 5.7 to 8.3",
+            "js": "react. vue2/vue3, nuxt4"
         }
     },
     "headers": {

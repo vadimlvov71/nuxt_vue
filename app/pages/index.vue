@@ -16,10 +16,15 @@
 
     <v-col cols="12" md>
       <h4>{{ t('name') }}</h4>
+      <p>{{ t('features.items.php') }}</p>
+      <p>{{ t('features.items.mysql') }}</p>
+      <p>{{ t('features.items.js') }}</p>
     </v-col>
   </v-row>
 
-
+  <Transition name="fade-slow" appear>
+    <div v-if="show" class="badge">{{ t('features.lazyLoad') }} </div>
+  </Transition>
    <v-card variant="outlined" rounded="lg" class="ma-4">
     <v-table hover class="nice-table bg-transparent">
       <thead>
@@ -53,14 +58,18 @@ const { t } = useI18n()
 //
 // Храним имя активной секции ('symfony', 'laravel' или null)
 const activeSection = ref('')
+const show = ref(false)
 
+onMounted(() => {
+  show.value = true
+})
 const toggle = (section) => {
   activeSection.value = activeSection.value === section ? null : section
 }
 
 const phpData = {
-  'my-blog': { name: 'My Blog', git: 'https://github.com/user/my-blog', description: 'Личный блог' },
-  'shop-api': { name: 'Shop API', git: 'https://github.com/user/shop-api', description: 'API магазина' },
+  'generator_recursion': { name: 'generator_recursion', git: 'https://https://github.com/vadimlvov71/generator_recursion/blob/main/index.php.com/user/my-blog', description: 'recursion' },
+  'currency_commission-api': { name: 'currency_commission API', git: 'https://github.com/vadimlvov71/currency_commission', description: 'Patterns: Stragedy and Factory' },
 }
 
 let symfonyData = {     // об’єкт
@@ -70,7 +79,8 @@ let symfonyData = {     // об’єкт
   'symfony6.3_openapi_jwt_phpunit': { name: 'symfony6.3_openapi_jwt_phpunit', git: 'https://github.com/vadimlvov71/symfony6.3_openapi_jwt_phpunit', description: 'Symfony 6.3 OpenApi JWT PHPUnit' }
 };
 let laravelData = {     // об’єкт
-  'file_handled_in_batches': { name: 'File Handled in Batches', git: 'https://github.com/vadimlvov71/file_handled_in_batches_with_laravel', description: 'File Handled in Batches with Laravel' },
+  'file_handled_in_batches': { name: 'File Handled in Batches', git: 'https://github.com/vadimlvov71/file_handled_in_batches_with_laravel', description: 'File Handled in Batches with Laravel, Horizon, Redis, Queue' },
+  'drivers_trips_laravel10': { name: 'Drivers Trips Laravel10', git: 'https://github.com/vadimlvov71/drivers_trips_laravel10', description: 'Laravel 10 implementation for driver trips with FeatureTests' }
 };
 
 let nuxtData = {     // об’єкт
@@ -111,5 +121,25 @@ p {
   background: #fff !important;
   font-weight: bold;
   text-transform: uppercase;
+}
+.badge {
+  width: 434px;
+  padding: 0px 0;
+  background-color: #22c55e;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Анимация появления: 2 секунды */
+.fade-slow-enter-active {
+  transition: opacity 2s ease;
+}
+.fade-slow-enter-from {
+  opacity: 0;
+}
+.fade-slow-enter-to {
+  opacity: 1;
 }
 </style>
