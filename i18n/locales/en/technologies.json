@@ -1,0 +1,15 @@
+{
+  "technologies": {
+    "title": "Technologies",
+    "description": "Technologies and tools I use in commercial work and personal projects.",
+    "intro": "Technologies I have used in commercial work and in the projects on this site.",
+    "groups": {
+      "backend": "Backend",
+      "databases": "Databases and search",
+      "queues": "Queues and real time",
+      "frontend": "Frontend",
+      "devops": "DevOps and tools",
+      "quality": "Testing and code quality"
+    }
+  }
+}
