@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const { data: jobs, status, error, refresh } = await useFetch('/api/jobs')
+const { data: jobs, status, error, refresh } = await useFetch<Job[]>('/api/jobs')
 // функции, а не строки: иначе после переключения языка заголовок остался бы прежним
 useSeoMeta({
   title: () => t('jobs.title'),

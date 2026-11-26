@@ -2,7 +2,7 @@
 defineProps<{
   active: string | null
   name: string
-  items: Record<string, { git: string; name: string; description: string }>
+  items: Project[]
 }>()
 
 const emit = defineEmits<{
@@ -24,7 +24,7 @@ const { t } = useI18n()
       />
       {{ name }}
       <span class="text-medium-emphasis text-caption ml-2">
-        ({{ Object.keys(items).length }})
+        ({{ items.length }})
       </span>
     </td>
   </tr>
@@ -32,7 +32,7 @@ const { t } = useI18n()
   <!-- строки проектов -->
   <TransitionGroup name="row-fade">
     <template v-if="active === name">
-      <tr v-for="(project, key) in items" :key="`${name}-${key}`">
+      <tr v-for="project in items" :key="`${name}-${project.git}`">
         <td class="font-weight-medium pl-10">
           <v-icon icon="mdi-folder-outline" size="small" class="mr-2" color="primary" />
           {{ project.name }}

@@ -40,7 +40,7 @@
 
       <tbody>
         <AccordionPanel
-          v-for="(items, name) in sectionsData"
+          v-for="(items, name) in sections"
           :key="name"
           :name="String(name)"
           :active="activeSection"
@@ -52,52 +52,22 @@
   </v-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const { t } = useI18n()
-//////////////////
-//
-// Храним имя активной секции ('symfony', 'laravel' или null)
-const activeSection = ref('')
-const show = ref(false)
 
-onMounted(() => {
-  show.value = true
-})
-const toggle = (section) => {
+const { data: sections } = await useFetch<ProjectSections>('/api/projects', { default: () => ({}) })
+
+// открыта одна секция таблицы (php, symfony...) или ни одной
+const activeSection = ref<string | null>(null)
+const toggle = (section: string) => {
   activeSection.value = activeSection.value === section ? null : section
 }
 
-const phpData = {
-  'generator_recursion': { name: 'generator_recursion', git: 'https://github.com/vadimlvov71/generator_recursion', description: 'recursion' },
-  'currency_commission-api': { name: 'currency_commission API', git: 'https://github.com/vadimlvov71/currency_commission', description: 'Patterns: Stragedy and Factory' },
-}
-
-let symfonyData = {     // об’єкт
- // 'OpenApi': { name: 'OpenApi', git: 'https://github.com/vadimlvov71/symfony-OpenApi', description: 'Symfony OpenApi' },
-  'symfony6_crud_phpunit': { name: 'symfony6_crud_phpunit', git: 'https://github.com/vadimlvov71/symfony6_crud_phpunit', description: 'Symfony 6 CRUD with PHPUnit' },
-  'two_symfony7': { name: 'two_symfony7', git: 'https://github.com/vadimlvov71/two_symfony7_commands_api_dockerized', description: 'Two Symfony7 Commands API Dockerized' },
-  'symfony6.3_openapi_jwt_phpunit': { name: 'symfony6.3_openapi_jwt_phpunit', git: 'https://github.com/vadimlvov71/symfony6.3_openapi_jwt_phpunit', description: 'Symfony 6.3 OpenApi JWT PHPUnit' }
-};
-let laravelData = {     // об’єкт
-  'file_handled_in_batches': { name: 'File Handled in Batches', git: 'https://github.com/vadimlvov71/file_handled_in_batches_with_laravel', description: 'File Handled in Batches with Laravel, Horizon, Redis, Queue' },
-  'drivers_trips_laravel10': { name: 'Drivers Trips Laravel10', git: 'https://github.com/vadimlvov71/drivers_trips_laravel10', description: 'Laravel 10 implementation for driver trips with FeatureTests' }
-};
-
-let nuxtData = {     // об’єкт
-  'this_site': { name: 'This Site', git: 'https://github.com/vadimlvov71/nuxt_vue', description: 'Nuxt My Personal Website' },
-};
-
-let dddData = {     // об’єкт
-  'ddd_laravel': { name: 'ddd_laravel', git: 'https://github.com/vadimlvov71/ddd_laravel', description: 'DDD with Laravel' },
-};
-
-const sectionsData = {
-  php: phpData,
-  symfony: symfonyData,
-  laravel: laravelData,
-  nuxt: nuxtData,
-  ddd: dddData,
-}
+// подпись под фото появляется плавно после загрузки страницы в браузере
+const show = ref(false)
+onMounted(() => {
+  show.value = true
+})
 </script>
 
 <style scoped>

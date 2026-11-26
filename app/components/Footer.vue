@@ -1,9 +1,5 @@
-<script setup>
-const route = useRoute()
+<script setup lang="ts">
 const { t } = useI18n()
-const head = useLocaleHead()
-const title = computed(() => t(route.meta.title ?? 'TBD', t('layouts.title'))
-);
 </script>
 
 <template>
