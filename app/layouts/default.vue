@@ -1,15 +1,19 @@
 <template>
-  <div class="layout">
+  <!-- v-app — корень Vuetify: фон страницы и цвета всех компонентов берутся из темы -->
+  <v-app :theme="theme">
     <Header />
-    <main>
-      <slot />
-    </main>
+    <v-main>
+      <v-container class="page py-8">
+        <slot />
+      </v-container>
+    </v-main>
     <Footer />
-  </div>
+  </v-app>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
+const { theme } = useSiteTheme()
 
 // lang/dir у <html>, ссылки hreflang на другие языки и og:locale.
 // Результат нужно передать в useHead: сам по себе useLocaleHead ничего не выводит.
@@ -29,3 +33,9 @@ useSeoMeta({
   ogDescription: () => t('seo.description'),
 })
 </script>
+
+<style scoped>
+.page {
+  max-width: 960px;
+}
+</style>

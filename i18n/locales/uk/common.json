@@ -7,7 +7,9 @@
     "home": "Головна",
     "job_experience": "Досвід роботи",
     "technologies": "Технології",
-    "language": "Мова"
+    "language": "Мова",
+    "theme_light": "Увімкнути світлу тему",
+    "theme_dark": "Увімкнути темну тему"
   },
   "button": {
     "open": "Відкрити",
