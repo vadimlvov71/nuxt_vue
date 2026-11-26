@@ -1,19 +1,20 @@
 {
-    "welcome": "Welcome to My Nuxt 4 Site",
-    "description": "This is a personal website with multilingual support.",
+  "home": {
+    "welcome": "Welcome to my personal website",
+    "description": "PHP and Laravel backend developer. Here you can find my work experience, technologies and projects.",
     "name": "Vadim Podolian",
-  
-    "features": {
-        "lazyLoad": "The above image is lazy loaded",
-        "items": {
-            "php": "PHP from 4.4 to 8.3",
-            "mysql": "Mysql from 5.7 to 8.3",
-            "js": "react. vue2/vue3, nuxt4"
-        }
+    "photo_alt": "Photo of Vadim Podolian",
+    "skills": {
+      "php": "PHP from 4.4 to 8.3",
+      "mysql": "MySQL from 5.7 to 8.3",
+      "js": "React, Vue 2/3, Nuxt 4"
     },
-    "headers": {
-        "project": "Project",
-        "description": "Description",
-        "git": "Git"
+    "lazy_load": "The image above is lazy loaded",
+    "repositories": "Git repositories",
+    "table": {
+      "project": "Project",
+      "description": "Description",
+      "git": "Git"
     }
+  }
 }

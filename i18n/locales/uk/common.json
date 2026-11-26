@@ -1,22 +1,21 @@
 {
   "seo": {
-    "title": "Вітаю на персональному сайті",
-    "description": "Це англійський опис сайту."
+    "title": "Вадим Подолян — PHP / Laravel розробник",
+    "description": "Персональний сайт Вадима Подоляна: backend-розробник на PHP і Laravel, досвід роботи, технології та open-source проєкти."
+  },
+  "nav": {
+    "home": "Головна",
+    "job_experience": "Досвід роботи",
+    "technologies": "Технології",
+    "language": "Мова"
   },
   "button": {
-    "open": "Відкрити"
+    "open": "Відкрити",
+    "refresh": "Оновити"
   },
-  "data_is_loaded": "Дані завантажуються",
-  "error": "Помилка",
-  "description": "This is a simple example of a page with a header, footer and content.",
-  "about" : {
-    "title": "About Nuxt 4 Site",
-    "content": "content About Nuxt 4 Site"
-  }, 
-  "nav": {
-    "home": "Домашня сторінка",
-    "job_experience": "Досвід роботи",
-    "technologies": "Технології"
+  "status": {
+    "loading": "Дані завантажуються",
+    "error": "Помилка"
   },
-  "footer": "© 2024 My Nuxt Site"
+  "footer": "© {year} Вадим Подолян"
 }

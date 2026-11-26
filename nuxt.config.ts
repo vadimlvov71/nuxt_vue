@@ -40,10 +40,13 @@ export default defineNuxtConfig({
         {
             code: 'en',
             name: 'English',
+            // BCP 47: из него i18n ставит <html lang> и ссылки hreflang
+            language: 'en-US',
             files: [
                 'en/common.json',
                 'en/home.json',
                 'en/job_experience.json',
+                'en/technologies.json',
                // 'en/contacts.json',
                // 'en/services.json',
                // 'en/seo.json'
@@ -52,10 +55,13 @@ export default defineNuxtConfig({
         {
             code: 'uk',
             name: 'Українська',
+            // BCP 47: из него i18n ставит <html lang> и ссылки hreflang
+            language: 'uk-UA',
             files: [
                 'uk/common.json',
                 'uk/home.json', 
                 'uk/job_experience.json',
+                'uk/technologies.json',
                // 'uk/contacts.json',
                // 'uk/services.json',
                // 'uk/seo.json'

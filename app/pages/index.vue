@@ -1,7 +1,7 @@
 <template>
   <section>
-    <h1>{{ t('welcome') }}</h1>
-    <p>{{ t('description') }}</p>
+    <h1>{{ t('home.welcome') }}</h1>
+    <p>{{ t('home.description') }}</p>
   </section>
     <v-row align="center">
       <v-col cols="12" md="auto">
@@ -10,31 +10,31 @@
       loading="lazy" 
       placeholder="blur" 
       width="220"
-      alt="Vadim Podolian"
+      :alt="t('home.photo_alt')"
     />
    </v-col>
 
     <v-col cols="12" md>
-      <h4>{{ t('name') }}</h4>
-      <p>{{ t('features.items.php') }}</p>
-      <p>{{ t('features.items.mysql') }}</p>
-      <p>{{ t('features.items.js') }}</p>
+      <h4>{{ t('home.name') }}</h4>
+      <p>{{ t('home.skills.php') }}</p>
+      <p>{{ t('home.skills.mysql') }}</p>
+      <p>{{ t('home.skills.js') }}</p>
     </v-col>
   </v-row>
 
   <Transition name="fade-slow" appear>
-    <div v-if="show" class="badge">{{ t('features.lazyLoad') }} </div>
+    <div v-if="show" class="badge">{{ t('home.lazy_load') }} </div>
   </Transition>
    <v-card variant="outlined" rounded="lg" class="ma-4">
     <v-table hover class="nice-table bg-transparent">
       <thead>
         <tr>
-          <th id="for-ccc" colspan="3" class="text-center header">git repositories:</th>
+          <th id="for-ccc" colspan="3" class="text-center header">{{ t('home.repositories') }}</th>
         </tr>
         <tr>
-          <th class="text-left">{{ t('headers.project') }}</th>
-          <th class="text-left">{{ t('headers.description') }}</th>
-          <th class="text-right">{{ t('headers.git') }}</th>
+          <th class="text-left">{{ t('home.table.project') }}</th>
+          <th class="text-left">{{ t('home.table.description') }}</th>
+          <th class="text-right">{{ t('home.table.git') }}</th>
         </tr>
       </thead>
 
@@ -68,7 +68,7 @@ const toggle = (section) => {
 }
 
 const phpData = {
-  'generator_recursion': { name: 'generator_recursion', git: 'https://https://github.com/vadimlvov71/generator_recursion/blob/main/index.php.com/user/my-blog', description: 'recursion' },
+  'generator_recursion': { name: 'generator_recursion', git: 'https://github.com/vadimlvov71/generator_recursion', description: 'recursion' },
   'currency_commission-api': { name: 'currency_commission API', git: 'https://github.com/vadimlvov71/currency_commission', description: 'Patterns: Stragedy and Factory' },
 }
 
