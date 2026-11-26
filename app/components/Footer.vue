@@ -8,7 +8,7 @@ const title = computed(() => t(route.meta.title ?? 'TBD', t('layouts.title'))
 
 <template>
   <footer class="footer">
-    <p>© {{ t('footer') }}</p>
+    <p>{{ t('footer', { year: new Date().getFullYear() }) }}</p>
   </footer>
 </template>
 <style scoped>

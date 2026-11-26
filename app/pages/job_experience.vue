@@ -1,19 +1,21 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { data: jobs, status, error, refresh } = await useFetch('/api/jobs')
+// функции, а не строки: иначе после переключения языка заголовок остался бы прежним
 useSeoMeta({
-  title:  t('job_experience') ,
-  description: t('job_experience_description') ,
-  ogTitle: t('job_experience') ,
+  title: () => t('jobs.title'),
+  description: () => t('jobs.description'),
+  ogTitle: () => t('jobs.title'),
+  ogDescription: () => t('jobs.description'),
 })
 
 </script>
 
 <template>
-  <h3>{{ t('job_experience') }}:</h3>
+  <h1>{{ t('jobs.title') }}</h1>
   <div>
-    <p v-if="status === 'pending'">{{ t('data_is_loaded') }}...</p>
-    <p v-else-if="error">{{ t('error') }}: {{ error.message }}</p>
+    <p v-if="status === 'pending'">{{ t('status.loading') }}…</p>
+    <p v-else-if="error">{{ t('status.error') }}: {{ error.message }}</p>
     <ul v-else>
       <li v-for="j in jobs" :key="j.id">
         <h3>{{ j.name }}</h3>
@@ -21,6 +23,6 @@ useSeoMeta({
         <div class="header-color">{{ j.from }} - {{ j.to }}</div>
       </li>
     </ul>
-    <button @click="refresh()">Обновить</button>
+    <button @click="refresh()">{{ t('button.refresh') }}</button>
   </div>
 </template>
