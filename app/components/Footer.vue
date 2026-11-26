@@ -3,16 +3,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <footer class="footer">
-    <p>{{ t('footer', { year: new Date().getFullYear() }) }}</p>
-  </footer>
+  <v-footer class="justify-center text-body-2 text-medium-emphasis py-4" border="t">
+    {{ t('footer', { year: new Date().getFullYear() }) }}
+  </v-footer>
 </template>
-<style scoped>
-.footer {
-  text-align: center;
-  padding: 15px 20px;
-  background-color: #f0f0f0;
-  color: #333;
-  font-size: 14px;
-}
-</style>

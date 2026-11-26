@@ -1,67 +1,7 @@
-<template>
-  <section>
-    <h1>{{ t('home.welcome') }}</h1>
-    <p>{{ t('home.description') }}</p>
-  </section>
-    <v-row align="center">
-      <v-col cols="12" md="auto">
-      <NuxtImg 
-      src="/images/new_my_foto.png" 
-      loading="lazy" 
-      placeholder="blur" 
-      width="220"
-      :alt="t('home.photo_alt')"
-    />
-   </v-col>
-
-    <v-col cols="12" md>
-      <h4>{{ t('home.name') }}</h4>
-      <p>{{ t('home.skills.php') }}</p>
-      <p>{{ t('home.skills.mysql') }}</p>
-      <p>{{ t('home.skills.js') }}</p>
-    </v-col>
-  </v-row>
-
-  <Transition name="fade-slow" appear>
-    <div v-if="show" class="badge">{{ t('home.lazy_load') }} </div>
-  </Transition>
-   <v-card variant="outlined" rounded="lg" class="ma-4">
-    <v-table hover class="nice-table bg-transparent">
-      <thead>
-        <tr>
-          <th id="for-ccc" colspan="3" class="text-center header">{{ t('home.repositories') }}</th>
-        </tr>
-        <tr>
-          <th class="text-left">{{ t('home.table.project') }}</th>
-          <th class="text-left">{{ t('home.table.description') }}</th>
-          <th class="text-right">{{ t('home.table.git') }}</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <AccordionPanel
-          v-for="(items, name) in sections"
-          :key="name"
-          :name="String(name)"
-          :active="activeSection"
-          :items="items"
-          @toggle="toggle"
-        />
-      </tbody>
-    </v-table>
-  </v-card>
-</template>
-
 <script setup lang="ts">
 const { t } = useI18n()
 
 const { data: sections } = await useFetch<ProjectSections>('/api/projects', { default: () => ({}) })
-
-// открыта одна секция таблицы (php, symfony...) или ни одной
-const activeSection = ref<string | null>(null)
-const toggle = (section: string) => {
-  activeSection.value = activeSection.value === section ? null : section
-}
 
 // подпись под фото появляется плавно после загрузки страницы в браузере
 const show = ref(false)
@@ -70,46 +10,93 @@ onMounted(() => {
 })
 </script>
 
+<template>
+  <section class="mb-8">
+    <h1 class="text-h4 text-primary mb-2">{{ t('home.welcome') }}</h1>
+    <p class="text-body-1">{{ t('home.description') }}</p>
+  </section>
+
+  <v-row align="center" class="mb-8">
+    <v-col cols="12" sm="auto" class="text-center">
+      <NuxtImg
+        src="/images/new_my_foto.png"
+        loading="lazy"
+        placeholder="blur"
+        width="220"
+        class="photo"
+        :alt="t('home.photo_alt')"
+      />
+      <Transition name="fade-slow" appear>
+        <div v-if="show" class="text-caption text-success mt-1">{{ t('home.lazy_load') }}</div>
+      </Transition>
+    </v-col>
+
+    <v-col cols="12" sm>
+      <h2 class="text-h5 mb-3">{{ t('home.name') }}</h2>
+      <div class="d-flex flex-wrap ga-2">
+        <v-chip prepend-icon="mdi-language-php" color="primary" variant="tonal">{{ t('home.skills.php') }}</v-chip>
+        <v-chip prepend-icon="mdi-database" color="primary" variant="tonal">{{ t('home.skills.mysql') }}</v-chip>
+        <v-chip prepend-icon="mdi-vuejs" color="primary" variant="tonal">{{ t('home.skills.js') }}</v-chip>
+      </div>
+    </v-col>
+  </v-row>
+
+  <h2 class="text-h6 mb-3">{{ t('home.repositories') }}</h2>
+  <!-- готовый аккордеон Vuetify: клавиатура, aria-expanded и анимация из коробки -->
+  <v-expansion-panels variant="accordion">
+    <v-expansion-panel v-for="(items, name) in sections" :key="name">
+      <v-expansion-panel-title>
+        <span class="font-weight-bold text-uppercase">{{ name }}</span>
+        <span class="text-medium-emphasis text-caption ml-2">({{ items.length }})</span>
+      </v-expansion-panel-title>
+
+      <v-expansion-panel-text>
+        <v-list density="comfortable" bg-color="transparent">
+          <v-list-item
+            v-for="project in items"
+            :key="project.git"
+            :title="project.name"
+            :subtitle="project.description"
+            prepend-icon="mdi-folder-outline"
+          >
+            <template #append>
+              <v-btn
+                :href="project.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="tonal"
+                color="primary"
+                size="small"
+                prepend-icon="mdi-github"
+              >
+                {{ t('button.open') }}
+              </v-btn>
+            </template>
+          </v-list-item>
+        </v-list>
+      </v-expansion-panel-text>
+    </v-expansion-panel>
+  </v-expansion-panels>
+</template>
+
 <style scoped>
-.nice-table thead th {
-  text-transform: uppercase;
-  font-size: 0.75rem !important;
-  letter-spacing: 0.06em;
-  font-weight: 600 !important;
-  background: rgba(var(--v-theme-primary), 0.08) !important;
+.photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
-h1 {
-  color: #007acc;
-  margin-bottom: 10px;
-}
-p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-#for-ccc  {
-  background: #fff !important;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.badge {
-  width: 434px;
-  padding: 0px 0;
-  background-color: #22c55e;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-/* Анимация появления: 2 секунды */
 .fade-slow-enter-active {
   transition: opacity 2s ease;
 }
+
 .fade-slow-enter-from {
   opacity: 0;
 }
-.fade-slow-enter-to {
-  opacity: 1;
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-slow-enter-active {
+    transition: none;
+  }
 }
 </style>

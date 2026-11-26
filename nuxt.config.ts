@@ -13,8 +13,6 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/styles/global.css'],
-
   devServer: {
     host: '0.0.0.0',
     port: 3000,
@@ -58,10 +56,35 @@ export default defineNuxtConfig({
     },
   },
 
+  // Единственный источник цветов сайта: в компонентах цвета берутся из темы
+  // (color="primary", rgb(var(--v-theme-...))), а не задаются вручную.
+  // Какая тема включена, решает cookie (composables/useSiteTheme.ts).
   vuetify: {
     vuetifyOptions: {
       theme: {
-        defaultTheme: 'dark',
+        defaultTheme: 'light',
+        themes: {
+          light: {
+            dark: false,
+            colors: {
+              primary: '#007acc',
+              secondary: '#0f4c75',
+              background: '#f5f7fa',
+              surface: '#ffffff',
+              success: '#16a34a',
+            },
+          },
+          dark: {
+            dark: true,
+            colors: {
+              primary: '#4fb3ff',
+              secondary: '#9ccfff',
+              background: '#0f172a',
+              surface: '#1e293b',
+              success: '#22c55e',
+            },
+          },
+        },
       },
     },
   },
