@@ -22,8 +22,8 @@ const groups: { key: string; icon: string; items: string[] }[] = [
 
 <template>
   <section>
-    <h1>{{ t('technologies.title') }}</h1>
-    <p>{{ t('technologies.intro') }}</p>
+    <h1 class="text-h4 text-primary mb-2">{{ t('technologies.title') }}</h1>
+    <p class="text-body-1">{{ t('technologies.intro') }}</p>
 
     <v-row class="mt-2">
       <v-col v-for="group in groups" :key="group.key" cols="12" sm="6">
@@ -43,14 +43,3 @@ const groups: { key: string; icon: string; items: string[] }[] = [
   </section>
 </template>
 
-<style scoped>
-h1 {
-  color: #007acc;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-</style>

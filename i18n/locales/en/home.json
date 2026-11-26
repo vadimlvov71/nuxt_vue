@@ -10,11 +10,6 @@
       "js": "React, Vue 2/3, Nuxt 4"
     },
     "lazy_load": "The image above is lazy loaded",
-    "repositories": "Git repositories",
-    "table": {
-      "project": "Project",
-      "description": "Description",
-      "git": "Git"
-    }
+    "repositories": "Git repositories"
   }
 }

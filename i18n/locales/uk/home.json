@@ -10,11 +10,6 @@
       "js": "React, Vue 2/3, Nuxt 4"
     },
     "lazy_load": "Фото вище завантажене за допомогою lazy loading",
-    "repositories": "Git-репозиторії",
-    "table": {
-      "project": "Проєкт",
-      "description": "Опис",
-      "git": "Git"
-    }
+    "repositories": "Git-репозиторії"
   }
 }
